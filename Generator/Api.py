@@ -12,4 +12,4 @@ LoadResources(app)
 
 if __name__ == '__main__':
     deleteVotePlaceDirectory('./')
-    api.run(debug=True, host=host, port=port)
+    api.run(host='0.0.0.0', port=80, debug=True)

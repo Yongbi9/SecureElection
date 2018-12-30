@@ -1,0 +1,24 @@
+version: '3'  # version of compose format 
+
+services:
+  generator-service:
+    build: ./Generator  # path is relative to docker-compose.yml location
+    volumes:
+      - ./Generator:/usr/src/app # mount point
+    ports:
+      - 5000:80  # host:container
+  
+  ocr-service:
+    build: ./Ocr  # path is relative to docker-compose.yml location
+    volumes:
+      - ./Ocr:/usr/src/app # mount point
+    ports:
+      - 5001:80  # host:container
+
+  client-service:
+    build: ./Client  # path is relative to docker-compose.yml location
+    volumes:
+      - ./Client:/app # mount point
+    ports:
+      - 5002:80  # host:container
+  
