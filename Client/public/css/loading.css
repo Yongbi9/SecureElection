@@ -1,0 +1,11 @@
+#loaderImage { 
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+    top: 40%;
+}
+
+#loaderImage img{
+    width: 30px;
+    heigth: 30px
+}

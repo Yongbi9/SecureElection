@@ -20,13 +20,26 @@ namespace org.cloud.election
 
 asset Report identified by repordId {
     o String repordId
-    o String pollingStation
     o Integer nbVoters
+    o Integer nbInscrits
     o Integer[] voices
-    --> Scrutineer owner
+    --> PollingStation pollingStation
+    --> Scrutineer scrutineer
+    --> Politician politician
+}
+
+asset PollingStation identified by pollingStationId {
+    o String pollingStationId
+    o String pollingStationName
 }
 
 participant Scrutineer identified by scrutineerId {
     o String scrutineerId
-    o Integer politicalPartyId
+    --> Politician politician
+    --> PollingStation pollingStation
+}
+
+participant Politician identified by politicianId {
+    o String politicianId
+    o String politicianName
 }

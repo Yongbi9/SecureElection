@@ -55,14 +55,14 @@ class PvsGenerator:
             for idCandidat in range(self.nbCandidats):
                 fraude = self.generateBooleanForFraude()
                 if fraude:
-                    if idCandidat == self.pp:
+                    if idCandidat + 1 == self.pp:
                         pv_pp = self.generatePVFraude(pvVrai, idCandidat + 1, idBureau + 1)
                         self.registerPV(pv_pp, idBureau + 1, 'Candidat' + str(idCandidat + 1) + '(PartiAuPouvoir)', idCandidat + 1)
                     else:
                         self.registerPV(self.generatePVFraude(pvVrai, idCandidat + 1, idBureau + 1), idBureau + 1,
                                         'Candidat' + str(idCandidat + 1), idCandidat + 1)
                 else:
-                    if idCandidat == self.pp:
+                    if idCandidat + 1 == self.pp:
                         pv_pp = pvVrai
                         self.registerPV(pv_pp, idBureau + 1, 'Candidat' + str(idCandidat + 1) + '(PartiAuPouvoir)', idCandidat + 1)
                     else:
@@ -261,5 +261,5 @@ class PvsGenerator:
                 os.mkdir(directory)
         self.saveAsImage(pv, idBureau, label)
         self.id += 1
-        requests.put(url='http://127.0.0.1:5001/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats),
+        requests.put(url='http://127.0.0.1:5001/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
                      files={'file': open('Bureau'+str(idBureau)+'/'+label+'.png', 'rb')})

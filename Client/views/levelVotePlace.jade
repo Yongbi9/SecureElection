@@ -1,0 +1,45 @@
+html
+  head
+    title My first chart using FusionCharts Suite XT
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='css/visualisation.css', rel='stylesheet')
+    link(rel="stylesheet", href='css/loading.css')
+    script(type='text/javascript', src='js/jquery-3.3.1.min.js')
+    script(type='text/javascript', src='js/bootstrap.min.js')
+    script(type='text/javascript', src='js/levelVotePlace.js')
+
+    // Include fusioncharts core library
+    script(type='text/javascript', src='js/fusioncharts.js')
+    // Include fusion theme
+    script(type='text/javascript', src='js/themes/fusioncharts.theme.fusion.js')
+  body
+    #loaderImage(style='display:none;')
+      img(src='img/ajax-loader.gif', alt='Loader')
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-dark.bg-dark
+      a.navbar-brand(href='/') Accueil
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/candidate') Resultats par candidat
+          li.nav-item.active
+            a.nav-link(href='#')
+              | Resultats par bureau de vote
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/verification') Verification
+    .container-fluid
+      .row
+        .col-md-7.col-lg-7.col-xs-12
+          #chart-containerTotal 
+        .col-md-5.col-lg-5.col-xs-12
+          #chart-container 
+          #pollingStation.form-group.form-place.row
+            select#chart.form-control.col
+              option(value='') Resultats par bureau de vote
+              each pollingStation in pollingStations
+                if pollingStation.pollingStationId == "1"
+                  option(value=pollingStation.pollingStationId, selected='') #{pollingStation.pollingStationName}
+                else
+                  option(value=pollingStation.pollingStationId) #{pollingStation.pollingStationName}

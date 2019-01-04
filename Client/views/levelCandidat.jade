@@ -1,0 +1,42 @@
+html
+  head
+    title My first chart using FusionCharts Suite XT
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='css/visualisation.css', rel='stylesheet')
+
+    script(type='text/javascript', src='js/jquery-3.3.1.min.js')
+    script(type='text/javascript', src='js/bootstrap.min.js')
+    script(type='text/javascript', src='js/levelCandidat.js')
+
+    // Include fusioncharts core library
+    script(type='text/javascript', src='js/fusioncharts.js')
+    // Include fusion theme
+    script(type='text/javascript', src='js/themes/fusioncharts.theme.fusion.js')
+  body
+    #loaderImage(style='display:none;')
+      img(src='img/ajax-loader.gif', alt='Loader')
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-dark.bg-dark
+      a.navbar-brand(href='/') Accueil
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='#')
+              | Resultats par candidat
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/votePlace') Resultats par bureau de vote
+          li.nav-item
+            a.nav-link(href='/verification') Verification
+    .container
+      .div
+        #chart-container 
+      #politician.form-group.row
+        select#chart.form-control.col
+          option(value='') Resultats par parti politique
+          each politician in politicians
+            if politician.politicianId == "1"
+              option(value=politician.politicianId, selected='') #{politician.politicianName}
+            else
+              option(value=politician.politicianId) #{politician.politicianName}

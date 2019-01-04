@@ -1,0 +1,16 @@
+.raphael-group-22-creditgroup text{
+    display: none;
+}
+.form-group{
+    width:45%; margin:auto;
+}
+
+.form-place{
+    width: 80% !important;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    margin-top: 15px;
+}

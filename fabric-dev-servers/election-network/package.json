@@ -3,7 +3,7 @@
     "composer": "^0.20.5"
   },
   "name": "election-network",
-  "version": "0.0.2",
+  "version": "0.0.9",
   "description": "A hyperledger fabric network for election",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/election-network.bna",

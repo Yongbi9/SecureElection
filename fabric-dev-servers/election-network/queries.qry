@@ -1,0 +1,20 @@
+query selectReportsByPolitician {
+  description: "Select all reports based on their politician"
+  statement:
+      SELECT org.cloud.election.Report
+          WHERE (politician == _$politician)
+}
+
+query selectReportsByPoliticianAndPollingStation {
+  description: "Select all reports based on their politician and polling station"
+  statement:
+      SELECT org.cloud.election.Report
+          WHERE (politician == _$politician AND pollingStation==_$pollingStation)
+}
+
+query selectReportByPollingStation {
+  description: "Select reports based on their polling station"
+  statement:
+      SELECT org.cloud.election.Report
+          WHERE (pollingStation == _$pollingStation)
+}
