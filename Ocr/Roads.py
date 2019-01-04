@@ -3,7 +3,7 @@ from flask_restful import Resource
 from Ocr import *
 import os, json, requests
 
-hostH="127.0.0.1"
+hostH="157.230.143.147"
 
 def LoadResources(app):
     app.add_resource(ParametersReport, '/api/ocr/parametersReport/<string:bureauId>/<string:politicalPartyId>/<string:generateId>/<string:nbCandidats>/<int:nbInscrits>')
