@@ -17,15 +17,11 @@ module.exports = function (app) {
         }
         axios.post('http://127.0.0.1:5000/api/report/generate', params)
         .then(response => {
-            if(response.data.status==1){
-
-            }
-            else{
-                
-            }
+            res.redirect('/candidate');
         });
-    })
-    app.get;('/candidate', function(req, res){
+    });
+    
+    app.get('/candidate', function(req, res){
         axios.get('http://localhost:3000/api/Politician')
         .then(response => {
             res.render('levelCandidat', {politicians:politician.removeNonePolitician(response)})

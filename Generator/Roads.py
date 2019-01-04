@@ -12,7 +12,7 @@ class GenerateReport(Resource):
     def post(self):
         data = request.get_json(cache=False)
         PvsGenerator.PvsGenerator(data['nbInscrits'], data['nbBureaux'], data['nbCandidats'], data['niveauFraude'])
-        return dict(info='Génération réussie avec succès')
+        return dict(status=1)
 
 
 class ImageReport(Resource):

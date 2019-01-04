@@ -5,18 +5,17 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
     title Election Cameroun 2.0
-    // Font Awesome
-    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.1/css/all.css')
-    link(rel="stylesheet", href='css/loading.css')
-    // SCRIPTS
-    // JQuery
     script(type='text/javascript', src='js/jquery-3.3.1.min.js')
+    script(type='text/javascript', src='js/accueil.js')
     // Bootstrap tooltips
     script(type='text/javascript', src='mdbpro/popper.min.js')
     // Bootstrap core JavaScript
     script(type='text/javascript', src='js/bootstrap.min.js')
     // MDB core JavaScript
     script(type='text/javascript', src='mdbpro/compiled.min.js')
+    // Font Awesome
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.1/css/all.css')
+    link(rel="stylesheet", href='css/loading.css')
     // Bootstrap core CSS
     link(href='css/bootstrap.min.css', rel='stylesheet')
     // Material Design Bootstrap
@@ -28,7 +27,7 @@ html(lang='en')
     #loaderImage(style='display:none;')
       img(src='img/ajax-loader.gif', alt='Loader')
     // Default form login
-    form.text-center.border.border-light.p-5.z-depth-5(action="/launch",method="post" style='width:25%; margin-left:auto; margin-right:auto; margin-top:10%; ')
+    form#idForm.text-center.border.border-light.p-5.z-depth-5(action="/launch",method="post" style='width:25%; margin-left:auto; margin-right:auto; margin-top:10%; ')
       p.h4.mb-4 Election Cameroun
       input#defaultLoginFormEmail.form-control.mb-4(name='nbInscrits', type='number', placeholder="Nombre d'inscrits", min='1', required='')
       input#defaultLoginFormEmail.form-control.mb-4(name='nbCandidats', type='number', placeholder='Nombre de candidats', min='1', required='')

@@ -1,6 +1,3 @@
-# Download base image ubuntu 18.04
-FROM ubuntu:18.04
-
 # Use an official Python runtime as a parent image
 FROM python:3.6-alpine3.6 
 
@@ -11,10 +8,10 @@ RUN apt-get update
 RUN apt-get install tesseract-ocr
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /appOCR
 
 # Copy the current directory contents into the container at /app
-COPY . /app
+COPY . /appOCR
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
