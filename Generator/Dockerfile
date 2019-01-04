@@ -6,7 +6,7 @@ RUN apt-get update
 
 # Install other dependances
 RUN apt-get install wkhtmltopdf -y
-RUN apt-get install python3-pip
+RUN apt-get install python3-pip -y
 
 # Set the working directory to /app
 WORKDIR /app_generator
