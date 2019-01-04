@@ -17,16 +17,20 @@ module.exports = function (app) {
             nbBureaux: parseInt(req.body.nbBureaux),
             niveauFraude: parseInt(req.body.niveauFraude)
         }
-        axios.post('http://'+host+':5000/api/report/generate', params)
-        .then(response => {
-            res.redirect('/candidate');
+        var hostG = "app_generator"
+        axios.post('http://'+hostG+':5000/api/report/generate', params)
+        .then(response1 => {
+            axios.get('http://'+host+':3000/api/Politician')
+            .then(response2 => {
+                res.render('levelCandidat', {politicians:politician.removeNonePolitician(response2)});
+            });
         });
     });
     
     app.get('/candidate', function(req, res){
         axios.get('http://'+host+':3000/api/Politician')
         .then(response => {
-            res.render('levelCandidat', {politicians:politician.removeNonePolitician(response)})
+            res.render('levelCandidat', {politicians:politician.removeNonePolitician(response)});
         });
     });
     app.get('/votePlace', function(req, res){

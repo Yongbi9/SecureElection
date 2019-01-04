@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const host = "157.230.143.147"
+const host = "127.0.0.1"
 
 var routes = require('./routes/routes');
 

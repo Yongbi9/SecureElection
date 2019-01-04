@@ -2,9 +2,10 @@ import os, random, shutil, requests
 
 import imgkit
 from jinja2 import Template
-from Api import host
 # pip install imgkit. then sudo apt-get install wkhtmltopdf
 # pip install jinja2
+
+hostOCR = "app_ocr"
 
 
 class PvsGenerator:
@@ -262,5 +263,5 @@ class PvsGenerator:
                 os.mkdir(directory)
         self.saveAsImage(pv, idBureau, label)
         self.id += 1
-        requests.put(url='http://'+host+':5001/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
+        requests.put(url='http://'+hostOCR+':5001/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
                      files={'file': open('Bureau'+str(idBureau)+'/'+label+'.png', 'rb')})
