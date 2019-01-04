@@ -8,11 +8,11 @@ RUN apt-get update
 RUN apt-get install tesseract-ocr -y
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
-RUN apt-get install tesseract-ocr
-RUN pip3 install pytesseract
-RUN pip3 install requests
-RUN pip3 install Flask
-RUN pip3 install flask-restful
+RUN apt-get install tesseract-ocr -y
+RUN pip3 install pytesseract -y
+RUN pip3 install requests -y
+RUN pip3 install Flask -y
+RUN pip3 install flask-restful -y
 
 
 # Set the working directory to /app
