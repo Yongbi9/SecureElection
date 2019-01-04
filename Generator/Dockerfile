@@ -6,6 +6,7 @@ RUN apt-get update
 
 # Install other dependances
 RUN apt-get install wkhtmltopdf -y
+RUN apt-get install python3-pip
 
 # Set the working directory to /app
 WORKDIR /app_generator
@@ -14,7 +15,7 @@ WORKDIR /app_generator
 COPY . /app_generator
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
