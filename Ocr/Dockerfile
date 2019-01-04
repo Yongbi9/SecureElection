@@ -1,11 +1,11 @@
 # Use an official Python runtime as a parent image
-FROM python:3.6-alpine3.6 
+FROM ubuntu:18.04
 
 # Update Software repository
 RUN apt-get update
 
 # install other dependances
-RUN apt-get install tesseract-ocr
+RUN apt-get install tesseract-ocr -y
 
 # Set the working directory to /app
 WORKDIR /app_ocr
