@@ -251,7 +251,10 @@ class PvsGenerator:
             else:
                 voixBulletinNull = voix
             i += 1
-        imgkit.from_string(tmpl.render(nomBureau=nomBureau, voixElecteurs=voixElecteurs, candidats=candidats, voixBulletinNull=voixBulletinNull, scrutateurs=scrutateurs), path)
+        options = {"xvfb": ""}
+        imgkit.from_string(tmpl.render(nomBureau=nomBureau, voixElecteurs=voixElecteurs, candidats=candidats, voixBulletinNull=voixBulletinNull, scrutateurs=scrutateurs), 
+                          path,
+                          options=options)
 
     def registerPV(self, pv, idBureau, label, politicalPartyId):
         directory = 'Bureau' + str(idBureau)
