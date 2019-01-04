@@ -5,9 +5,11 @@ FROM ubuntu:18.04
 RUN apt-get update
 
 # Install other dependances
-RUN apt-get install wkhtmltopdf -y
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
+RUN pip3 install imgkit -y
+RUN apt-get install wkhtmltopdf -y
+RUN pip3 install jinja2 -y
 
 # Set the working directory to /app
 WORKDIR /app_generator

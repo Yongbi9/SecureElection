@@ -8,6 +8,8 @@ RUN apt-get update
 RUN apt-get install tesseract-ocr -y
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
+RUN pip3 install pytesseract
+RUN apt-get install tesseract-ocr
 
 # Set the working directory to /app
 WORKDIR /app_ocr
