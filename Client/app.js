@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+const host = "157.230.143.147"
+
 var routes = require('./routes/routes');
 
 app.set('views', __dirname + '/views');
