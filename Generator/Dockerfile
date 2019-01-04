@@ -9,11 +9,11 @@ RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
 RUN apt-get install xvfb -y
 RUN apt-get install wkhtmltopdf -y
-RUN pip3 install imgkit -y
-RUN pip3 install jinja2 -y
-RUN pip3 install requests -y
-RUN pip3 install Flask -y
-RUN pip3 install flask-restful -y
+RUN pip3 install imgkit 
+RUN pip3 install jinja2 
+RUN pip3 install requests 
+RUN pip3 install Flask 
+RUN pip3 install flask-restful 
 
 
 # Set the working directory to /app
