@@ -8,10 +8,10 @@ RUN apt-get update
 RUN apt-get install tesseract-ocr
 
 # Set the working directory to /app
-WORKDIR /appOCR
+WORKDIR /app_ocr
 
 # Copy the current directory contents into the container at /app
-COPY . /appOCR
+COPY . /app_ocr
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt

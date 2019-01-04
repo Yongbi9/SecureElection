@@ -8,10 +8,10 @@ RUN apt-get update
 RUN apt-get install wkhtmltopdf
 
 # Set the working directory to /app
-WORKDIR /appGenerator
+WORKDIR /app_generator
 
 # Copy the current directory contents into the container at /app
-COPY . /appGenerator
+COPY . /app_generator
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt

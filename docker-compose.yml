@@ -1,28 +1,28 @@
 version: '3'  # version of compose format 
 
 services:
-  appGenerator:
+  app_generator:
     build: ./Generator  # path is relative to docker-compose.yml location
     volumes:
-      - ./Generator:/appGenerator # mount point
+      - ./Generator:/app_generator # mount point
     ports:
       - 5000:80  # host:container
   
-  appOCR:
+  app_ocr:
     build: ./Ocr  # path is relative to docker-compose.yml location
     volumes:
-      - ./Ocr:/appOCR # mount point
+      - ./Ocr:/app_ocr # mount point
     ports:
       - 5001:80  # host:container
     depends_on:
-      - appGenerator  # appOCR is not going to work unless appGenerator is running
+      - app_generator  # appOCR is not going to work unless appGenerator is running
 
-  appClient:
+  app_client:
     build: ./Client  # path is relative to docker-compose.yml location
     volumes:
-      - ./Client:/app # mount point
+      - ./Client:/app_client # mount point
     ports:
       - 5002:80  # host:container
     depends_on:
-      - appOCR  # appClient is not going to work unless appOCR is running
+      - app_ocr  # appClient is not going to work unless appOCR is running
   
