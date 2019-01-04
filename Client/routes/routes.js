@@ -18,7 +18,7 @@ module.exports = function (app) {
             niveauFraude: parseInt(req.body.niveauFraude)
         }
         var hostG = "app_generator"
-        axios.post('http://'+hostG+':5000/api/report/generate', params)
+        axios.post('http://'+hostG+'/api/report/generate', params)
         .then(response1 => {
             axios.get('http://'+host+':3000/api/Politician')
             .then(response2 => {

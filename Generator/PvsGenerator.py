@@ -263,5 +263,5 @@ class PvsGenerator:
                 os.mkdir(directory)
         self.saveAsImage(pv, idBureau, label)
         self.id += 1
-        requests.put(url='http://'+hostOCR+':5001/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
+        requests.put(url='http://'+hostOCR+'/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
                      files={'file': open('Bureau'+str(idBureau)+'/'+label+'.png', 'rb')})
