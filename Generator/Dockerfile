@@ -21,4 +21,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 80
 
 # Run app.py when the container launches
-CMD ["python", "Api.py"]
+CMD ["python3", "Api.py"]
