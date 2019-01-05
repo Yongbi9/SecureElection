@@ -7,6 +7,7 @@ RUN apt-get update \
     && apt-get install -y curl \
     && apt-get -y autoclean
 
+
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 8.14.1
 
@@ -19,6 +20,11 @@ RUN source $NVM_DIR/nvm.sh \
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN apt-get install python -y
+RUN apt-get install python-pip -y
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
 
 RUN npm install -g composer-cli@0.20
 RUN npm install -g composer-rest-server@0.20
