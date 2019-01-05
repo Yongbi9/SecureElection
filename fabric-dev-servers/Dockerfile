@@ -5,6 +5,7 @@ RUN apt-get update
 RUN apt-get install curl -y
 RUN curl -O https://hyperledger.github.io/composer/latest/prereqs-ubuntu.sh
 RUN chmod u+x prereqs-ubuntu.sh
+RUN sed -i -e 's/sudo//g' ./prereqs-ubuntu.sh
 RUN ./prereqs-ubuntu.sh
 RUN npm install -g composer-cli@0.20
 RUN npm install -g composer-rest-server@0.20
