@@ -4,8 +4,6 @@ RUN apt-get update
 
 RUN apt-get install curl -y
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-RUN touch .bash_profile
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 RUN nvm install v8
 RUN nvm use 8
 RUN npm install -g composer-cli@0.20
