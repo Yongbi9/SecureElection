@@ -1,6 +1,5 @@
 $(document).ready(function(){
     FusionCharts.ready(function(){
-        $("#loaderImage").show()
         $.ajax({
             url: "/results",
             type: "GET",
@@ -15,13 +14,11 @@ $(document).ready(function(){
                     dataSource: res
                 });
                 fusioncharts.render();
-                $("#loaderImage").hide()
             }
         });
 
         var selectInput = document.getElementById("chart");
         var pollingStationId = selectInput.options[selectInput.selectedIndex].value
-        $("#loaderImage").show()
         $.ajax({
             url: "/resultsPoliticiansByPlace",
             type: "POST",
@@ -39,7 +36,6 @@ $(document).ready(function(){
                     });
                     fusioncharts.render();
                 });
-                $("#loaderImage").hide()
             }
         });
     });
@@ -47,7 +43,6 @@ $(document).ready(function(){
 
     function chart(){
         var pollingStationId = $("#chart").val();
-        $("#loaderImage").show()
         $.ajax({
             url: "/resultsPoliticiansByPlace",
             type: "POST",
@@ -65,7 +60,6 @@ $(document).ready(function(){
                     });
                     fusioncharts.render();
                 });
-                $("#loaderImage").hide()
             }
         });
     }

@@ -27,7 +27,6 @@ $(document).ready(function(){
     
     function chart(){
         var politicianId = $("#chart").val();
-        $("#loaderImage").show()
         $.ajax({
             url: "/resultsPlacesByPolitician",
             type: "POST",
@@ -45,7 +44,6 @@ $(document).ready(function(){
                     });
                     fusioncharts.render();
                 });
-                $("#loaderImage").hide()
             }
         });
     }

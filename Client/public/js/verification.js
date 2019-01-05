@@ -1,6 +1,5 @@
 $(document).ready(function(){
     FusionCharts.ready(function(){
-        $("#loaderImage").show()
         var selectInput = document.getElementById("chart");
         var pollingStationId = selectInput.options[selectInput.selectedIndex].value
         $.ajax({
@@ -20,14 +19,12 @@ $(document).ready(function(){
                     });
                     fusioncharts.render();
                 });
-                $("#loaderImage").hide()
             }
         });
     });
 
 
     function chart(){
-        $("#loaderImage").show()
         var pollingStationId = $("#chart").val();
         $.ajax({
             url: "/resultsTrueReportByPlace",
@@ -46,7 +43,6 @@ $(document).ready(function(){
                     });
                     fusioncharts.render();
                 });
-                $("#loaderImage").hide()
             }
         });
     }
