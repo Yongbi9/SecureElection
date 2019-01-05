@@ -23,9 +23,9 @@ html(lang='en')
     link(href='mdbpro/mdbpro.css', rel='stylesheet')
     // Your custom styles (optional)
     link(href='css/style.css', rel='stylesheet')
+    link(href='css/cover-spin.css', rel='stylesheet')
   body(style='')
-    #loaderImage(style='display:none;')
-      img(src='img/ajax-loader.gif', alt='Loader')
+    div#cover-spin
     // Default form login
     form#idForm.text-center.border.border-light.p-5.z-depth-5(action="/launch",method="post" style='width:25%; margin-left:auto; margin-right:auto; margin-top:10%; ')
       p.h4.mb-4 Election Cameroun
@@ -38,5 +38,5 @@ html(lang='en')
         option(value='1') Solitaire
         option(value='2') Coalition
       // Sign in button
-      button.btn.btn-info.btn-block.my-4(type='submit', style='background-color: rgb(33, 37, 41)') Lancer
+      button.btn.btn-info.btn-block.my-4(type='submit', style='background-color: rgb(33, 37, 41)', onclick="$('#cover-spin').show(0)") Lancer
     // Default form login
