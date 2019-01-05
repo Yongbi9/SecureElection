@@ -5,7 +5,7 @@ from jinja2 import Template
 # pip install imgkit. then sudo apt-get install wkhtmltopdf
 # pip install jinja2
 
-hostOCR = "app_ocr"
+hostOCR = "127.0.0.1:5001" #"app_ocr"
 
 
 class PvsGenerator:
@@ -268,3 +268,4 @@ class PvsGenerator:
         self.id += 1
         requests.put(url='http://'+hostOCR+'/api/ocr/parametersReport/'+ str(idBureau)+'/'+str(politicalPartyId)+'/'+str(self.id)+'/'+str(self.nbCandidats)+'/'+str(self.nbInscrits),
                      files={'file': open('Bureau'+str(idBureau)+'/'+label+'.png', 'rb')})
+                    

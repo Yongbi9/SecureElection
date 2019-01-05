@@ -15,7 +15,7 @@ def Ocr(filename, BureauId, politicalPartyId, generateId, nb_candidats, nbInscri
     data['Candidats'] = {}
     for i in range(3, 3 + nb_candidats):
         data['Candidats'][" ".join(str(x) for x in textList[i].split(' ')[:2])] = textList[i].split(' ')[-1]
-    data['Candidats']['Bulletion null'] = textList[i + 1].split(' ')[-1]
+    data['Candidats']['Bulletin null'] = textList[i + 1].split(' ')[-1]
     if politicalPartyId == 0:
         politicianName = 'VraiPv'
     elif politicalPartyId == -1:

@@ -3,7 +3,7 @@ from flask_restful import Resource
 from Ocr import *
 import os, json, requests
 
-hostH="157.230.143.147"
+hostH= "fabric_servers" #"localhost" #"157.230.143.147"
 
 def LoadResources(app):
     app.add_resource(ParametersReport, '/api/ocr/parametersReport/<string:bureauId>/<string:politicalPartyId>/<string:generateId>/<string:nbCandidats>/<int:nbInscrits>')
@@ -21,6 +21,3 @@ class ParametersReport(Resource):
         response2 = requests.post(url="http://"+hostH+":3000/api/PollingStation", json=pollingStation).json()
         response3 = requests.post(url="http://"+hostH+":3000/api/Scrutineer", json=scrutineer).json()
         response4 = requests.post(url="http://"+hostH+":3000/api/Report", json=report).json()
-
-def decode(data):
-    return data[1:len(data) - 1]

@@ -5,13 +5,13 @@ FROM ubuntu:18.04
 RUN apt-get update
 
 # install other dependances
-RUN apt-get install tesseract-ocr -y
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
+RUN apt-get install ttf-aenigma fonts-tuffy -y
 RUN apt-get install tesseract-ocr -y
 RUN pip3 install pytesseract 
-RUN pip3 install requests 
-RUN pip3 install Flask 
+RUN pip3 install requests
+RUN pip3 install Flask
 RUN pip3 install flask-restful 
 
 
