@@ -31,7 +31,7 @@ html
     .container-fluid
       .row
         .col-md-7.col-lg-7.col-xs-12
-          table.table.table-borderless
+          table.table.table-borderless.card
             tbody
               tr
                 td.table-success
@@ -39,7 +39,7 @@ html
               tr
                 td.table-danger
                 td Fraude commise
-          table.table.table-bordered.table-striped.table-borderless
+          table.table.table-bordered.table-striped.table-borderless.card
             thead
               tr
                 th(scope='col') Participant
@@ -55,8 +55,8 @@ html
                       else
                         td.table-success
         .col-md-5.col-lg-5.col-xs-12
-          #chart-container
-          #pollingStation.form-group.form-place.row
+          #chart-container.card
+          #pollingStation.form-group.form-place.row.card
             select#chart.form-control.col
               option(value='') Resultats par bureau de vote
               each pollingStation in pollingStations
