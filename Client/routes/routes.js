@@ -5,7 +5,7 @@ module.exports = function (app) {
     var politician = require('../helpers/politician')
     var pollingStation = require('../helpers/pollingStation')
     var verification = require('../helpers/verification')
-    var host = require('../app').host
+    var host = "157.230.143.147"
 
     app.get('/', function (req, res) {
         res.render('accueil')
