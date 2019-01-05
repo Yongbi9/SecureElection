@@ -10,6 +10,7 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.render('accueil')
     });
+
     app.post('/launch', function(req, res){
         params = {
             nbInscrits: parseInt(req.body.nbInscrits),
@@ -17,7 +18,7 @@ module.exports = function (app) {
             nbBureaux: parseInt(req.body.nbBureaux),
             niveauFraude: parseInt(req.body.niveauFraude)
         }
-        var hostG = "localhost"; //"app_generator"
+        var hostG = "app_generator"
         axios.post('http://'+hostG+'/api/report/generate', params)
         .then(response1 => {
             axios.get('http://'+host+':3000/api/Politician')
