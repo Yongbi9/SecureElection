@@ -45,7 +45,7 @@ def Ocr(filename, BureauId, politicalPartyId, generateId, nb_candidats, nbInscri
           "repordId": generateId,
           "nbVoters": int(data['Electeurs']),
           "nbInscrits": nbInscrits,
-          "voices": [int(data['Candidats'][voice]) for voice in data['Candidats']],
+          "voices": [re.sub(r'[^0-9]+', "", data['Candidats'][voice]) for voice in data['Candidats']],
           "pollingStation": "resource:org.cloud.election.PollingStation#"+str(BureauId),
           "scrutineer": "resource:org.cloud.election.Scrutineer#"+generateId,
           "politician": "resource:org.cloud.election.Politician#"+str(politicalPartyId),

@@ -21,10 +21,7 @@ module.exports = function (app) {
         var hostG = "app_generator"
         axios.post('http://'+hostG+'/api/report/generate', params)
         .then(response1 => {
-            axios.get('http://'+host+':3000/api/Politician')
-            .then(response2 => {
-                res.render('levelCandidat', {politicians:politician.removeNonePolitician(response2)});
-            });
+            res.redirect('/candidate');
         });
     });
     
