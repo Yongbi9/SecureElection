@@ -1,17 +1,26 @@
-FROM ubuntu:18.04
+FROM debian:latest
 
-RUN apt-get update
+# replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN apt-get install curl -y
+
+RUN apt-get update \
+    && apt-get install -y curl \
+    && apt-get -y autoclean
 
 ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 8.14.1
 
-RUN apt-get install -y build-essential libssl-dev
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
-RUN RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash 
-RUN source $NVM_DIR/nvm.sh 
-RUN nvm install 8
-RUN nvm use 8
+# install node and npm
+RUN source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 RUN npm install -g composer-cli@0.20
 RUN npm install -g composer-rest-server@0.20
