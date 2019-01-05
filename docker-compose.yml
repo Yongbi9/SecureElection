@@ -1,13 +1,6 @@
 version: '3'  # version of compose format 
 
 services:
-  fabric_servers:
-    build: ./fabric-dev-servers
-    volumes:
-      - ./fabric-dev-servers:/fabric_servers
-    ports:
-      - 5003:3000
-
   app_generator:
     build: ./Generator  
     volumes:

@@ -5,7 +5,7 @@ from jinja2 import Template
 # pip install imgkit. then sudo apt-get install wkhtmltopdf
 # pip install jinja2
 
-hostOCR = "127.0.0.1:5001" #"app_ocr"
+hostOCR = "app_ocr" #"127.0.0.1:5001" #"app_ocr"
 
 
 class PvsGenerator:
