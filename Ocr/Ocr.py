@@ -1,5 +1,6 @@
 import pytesseract
 from PIL import Image
+import re
 
 # pip3 install pytesseract
 # sudo update
