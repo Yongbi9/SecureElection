@@ -1,14 +1,14 @@
 FROM ubuntu:18.04
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 RUN apt-get update
 
 RUN apt-get install curl -y
 
 ENV NVM_DIR /usr/local/nvm
 
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+RUN apt-get install -y build-essential libssl-dev
+
+RUN RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash 
 RUN source $NVM_DIR/nvm.sh 
 RUN nvm install 8
 RUN nvm use 8
