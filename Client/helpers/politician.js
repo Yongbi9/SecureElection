@@ -41,7 +41,7 @@ exports.votersPolitician = function(data, id){
             "subCaption": pourcentage+"% des voix",
             "xAxisName": "Bureaux de votes",
             "yAxisName": "Nombre de voix",
-            "numberSuffix": "K",
+            "numberSuffix": "",
             "theme": "fusion",
         },
         // Chart Data
