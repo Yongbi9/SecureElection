@@ -3,7 +3,6 @@ FROM debian:latest
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-
 RUN apt-get update \
     && apt-get install -y curl \
     && apt-get -y autoclean
@@ -13,7 +12,6 @@ ENV NODE_VERSION 8.14.1
 
 RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
-# install node and npm
 RUN source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
