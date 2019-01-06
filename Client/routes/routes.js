@@ -22,6 +22,9 @@ module.exports = function (app) {
         axios.post('http://'+hostG+'/api/report/generate', params)
         .then(response => {
             res.redirect('/candidate');
+        })
+        .catch(function(error){
+            res.redirect('/')
         });
     });
     
