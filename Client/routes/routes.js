@@ -1,11 +1,12 @@
 const axios = require('axios')
+const env = require('../helpers/env')
 
 
 module.exports = function (app) {
     var politician = require('../helpers/politician')
     var pollingStation = require('../helpers/pollingStation')
     var verification = require('../helpers/verification')
-    var host = "157.230.143.147"
+    var host = env('APP_FABRIC') 
 
     app.get('/', function (req, res) {
         res.render('accueil')
