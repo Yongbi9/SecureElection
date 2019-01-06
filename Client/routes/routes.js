@@ -33,53 +33,61 @@ module.exports = function (app) {
                         var scrutineerIds = response3.data.map(function(item){ return item.scrutineerId });
                         var reportIds = response4.data.map(function(item){ return item.reportId });
 
-                        var deleteReport = function(i) {
-                            if(i < reportIds.length) {
-                                axios.delete('http://'+host+':3000/api/Report/'+reportIds[i]).then(function() {
-                                    deleteReport(++i)
-                                });
-                            }
-                            else{
-                                console.log("suppression ok");
-                                axios.post('http://'+hostG+'/api/report/generate', params)
-                                .then(response5 => {
-                                    res.redirect('/candidate');
-                                });
-                            }
+                        if(reportIds.length == 0){
+                            axios.post('http://'+hostG+'/api/report/generate', params)
+                            .then(response6 => {
+                                res.redirect('/candidate');
+                            });
                         }
-                        var deleteScrutineer = function(i) {
-                            if(i < scrutineerIds.length) {
-                                axios.delete('http://'+host+':3000/api/Scrutineer/'+scrutineerIds[i]).then(function() {
-                                    deleteScrutineer(++i)
-                                });
+                        else{
+                            var deleteReport = function(i) {
+                                if(i < reportIds.length) {
+                                    axios.delete('http://'+host+':3000/api/Report/'+reportIds[i]).then(function() {
+                                        deleteReport(++i)
+                                    });
+                                }
+                                else{
+                                    console.log("suppression ok");
+                                    axios.post('http://'+hostG+'/api/report/generate', params)
+                                    .then(response6 => {
+                                        res.redirect('/candidate');
+                                    });
+                                }
                             }
-                            else{
-                                deleteReport(0)
+                            var deleteScrutineer = function(i) {
+                                if(i < scrutineerIds.length) {
+                                    axios.delete('http://'+host+':3000/api/Scrutineer/'+scrutineerIds[i]).then(function() {
+                                        deleteScrutineer(++i)
+                                    });
+                                }
+                                else{
+                                    deleteReport(0)
+                                }
                             }
+    
+                            var deletePollingStation = function(i) {
+                                if(i < pollingStationIds.length) {
+                                    axios.delete('http://'+host+':3000/api/PollingStation/'+pollingStationIds[i]).then(function() {
+                                        deletePollingStation(++i)
+                                    })
+                                }
+                                else{
+                                    deletePollingStation(0)
+                                }
+                            }
+    
+                            var deletePolitician = function(i) {
+                                if(i < scrutineerIds.length) {
+                                    axios.delete('http://'+host+':3000/api/Politician/'+politicianIds[i]).then(function() {
+                                        deletePolitician(++i)
+                                    })
+                                }
+                                else{
+                                    deletePollingStation(0)
+                                }
+                            }
+                            deletePolitician(0);
                         }
-
-                        var deletePollingStation = function(i) {
-                            if(i < pollingStationIds.length) {
-                                axios.delete('http://'+host+':3000/api/PollingStation/'+pollingStationIds[i]).then(function() {
-                                    deletePollingStation(++i)
-                                })
-                            }
-                            else{
-                                deletePollingStation(0)
-                            }
-                        }
-
-                        var deletePolitician = function(i) {
-                            if(i < scrutineerIds.length) {
-                                axios.delete('http://'+host+':3000/api/Politician/'+politicianIds[i]).then(function() {
-                                    deletePolitician(++i)
-                                })
-                            }
-                            else{
-                                deletePollingStation(0)
-                            }
-                        }
-                        deletePolitician(0);
                     });
                 });
             });
