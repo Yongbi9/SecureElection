@@ -19,78 +19,9 @@ module.exports = function (app) {
             niveauFraude: parseInt(req.body.niveauFraude)
         }
         var hostG = "app_generator"
-
-        axios.get('http://'+host+':3000/api/Politician')
-        .then(response1 => {
-            axios.get('http://'+host+':3000/api/PollingStation')
-            .then(response2 => {
-                axios.get('http://'+host+':3000/api/Scrutineer')
-                .then(response3 => {
-                    axios.get('http://'+host+':3000/api/Report')
-                    .then(response4 => {
-                        var politicianIds = response1.data.map(function(item){ return item.politicianId });
-                        var pollingStationIds = response2.data.map(function(item){ return item.pollingStationId })
-                        var scrutineerIds = response3.data.map(function(item){ return item.scrutineerId });
-                        var reportIds = response4.data.map(function(item){ return item.reportId });
-
-                        if(reportIds.length == 0){
-                            axios.post('http://'+hostG+'/api/report/generate', params)
-                            .then(response6 => {
-                                res.redirect('/candidate');
-                            });
-                        }
-                        else{
-                            var deleteReport = function(i) {
-                                if(i < reportIds.length) {
-                                    axios.delete('http://'+host+':3000/api/Report/'+reportIds[i]).then(function() {
-                                        deleteReport(++i)
-                                    });
-                                }
-                                else{
-                                    console.log("suppression ok");
-                                    axios.post('http://'+hostG+'/api/report/generate', params)
-                                    .then(response6 => {
-                                        res.redirect('/candidate');
-                                    });
-                                }
-                            }
-                            var deleteScrutineer = function(i) {
-                                if(i < scrutineerIds.length) {
-                                    axios.delete('http://'+host+':3000/api/Scrutineer/'+scrutineerIds[i]).then(function() {
-                                        deleteScrutineer(++i)
-                                    });
-                                }
-                                else{
-                                    deleteReport(0)
-                                }
-                            }
-    
-                            var deletePollingStation = function(i) {
-                                if(i < pollingStationIds.length) {
-                                    axios.delete('http://'+host+':3000/api/PollingStation/'+pollingStationIds[i]).then(function() {
-                                        deletePollingStation(++i)
-                                    })
-                                }
-                                else{
-                                    deletePollingStation(0)
-                                }
-                            }
-    
-                            var deletePolitician = function(i) {
-                                if(i < scrutineerIds.length) {
-                                    axios.delete('http://'+host+':3000/api/Politician/'+politicianIds[i]).then(function() {
-                                        deletePolitician(++i)
-                                    })
-                                }
-                                else{
-                                    deletePollingStation(0)
-                                }
-                            }
-                            deletePolitician(0);
-                        }
-                    });
-                });
-            });
+        axios.post('http://'+hostG+'/api/report/generate', params)
+        .then(response => {
+            res.redirect('/candidate');
         });
     });
     
