@@ -23,9 +23,6 @@ module.exports = function (app) {
         .then(response => {
             res.redirect('/candidate');
         })
-        .catch(function(error){
-            res.redirect('/')
-        });
     });
     
     app.get('/candidate', function(req, res){
