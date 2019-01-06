@@ -6,6 +6,6 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 curl -O https://hyperledger.github.io/composer/v0.19/prereqs-ubuntu.sh
-hmod u+x prereqs-ubuntu.sh
+chmod u+x prereqs-ubuntu.sh
 ./prereqs-ubuntu.sh
 
